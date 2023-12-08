@@ -1,0 +1,23 @@
+<!-- risk_assessment/templates/risk_assessment/risk_assessment_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}Risk Assessment Detail{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2 class="mb-4">Risk Assessment Detail</h2>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ risk_assessment.category }} Risk Assessment</h5>
+        <p class="card-text"><strong>Description:</strong> {{ risk_assessment.description }}</p>
+        <p class="card-text"><strong>Impact:</strong> {{ risk_assessment.impact }}</p>
+        <p class="card-text"><strong>Likelihood:</strong> {{ risk_assessment.likelihood }}</p>
+        <p class="card-text"><strong>Mitigation Plan:</strong> {{ risk_assessment.mitigation_plan }}</p>
+        <p class="card-text"><small class="text-muted">Timestamp: {{ risk_assessment.timestamp }}</small></p>
+      </div>
+    </div>
+
+    <a href="{% url 'risk_assessment:risk_assessment_list' %}" class="btn btn-secondary mt-3">Back to Risk Assessment List</a>
+  </div>
+{% endblock %}

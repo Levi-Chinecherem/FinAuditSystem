@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}FinAuditSystem - Home{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Welcome to FinAuditSystem!</h1>
+            <p class="lead">Your comprehensive solution for automated auditing and classification.</p>
+            <hr class="my-4">
+            <p>This system is designed to meet the auditing needs of financial institutions with a focus on automation, security, and collaboration.</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="#about" role="button">Learn more</a>
+            </p>
+        </div>
+
+        <!-- About Section -->
+        <section id="about" class="mb-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>About FinAuditSystem</h2>
+                    <p>
+                        FinAuditSystem is a cutting-edge platform that streamlines auditing processes, ensuring accuracy, efficiency, and data security. Whether you're a financial institution, third-party auditor, or an authorized application user, our system has you covered.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <!-- Add an image or graphic related to your system -->
+                    <img src="https://softengine.com/wp-content/uploads/2021/02/audit-1-1536x1073.jpg" alt="System Image" class="img-fluid">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="mb-5">
+            <h2>Key Features</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Automated Auditing</h5>
+                            <p class="card-text">Efficient and accurate auditing processes to minimize manual intervention.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Data Security</h5>
+                            <p class="card-text">Ensuring the security and privacy of sensitive financial data.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Third-Party Auditor (TPA)</h5>
+                            <p class="card-text">Regular checks on the integrity and availability of delegated data.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more cards for additional features -->
+        </section>
+
+        <!-- User Collaboration Section -->
+        <section id="collaboration" class="mb-5">
+            <h2>User Collaboration</h2>
+            <p>
+                FinAuditSystem provides a collaborative environment for users to engage in discussions, share insights, and stay informed about audit reviews and key control activities. Join the conversation!
+            </p>
+            <!-- Add discussion forum or collaboration features -->
+        </section>
+
+        <!-- System Efficiency Section -->
+        <section id="efficiency" class="mb-5">
+            <h2>System Efficiency</h2>
+            <p>
+                Our system is designed to be reliable, efficient, and capable of handling the auditing needs of financial institutions. Expect consistent and efficient audit results.
+            </p>
+            <!-- Add more details about system efficiency -->
+        </section>
+
+        <!-- Call to Action Section -->
+        <section id="cta" class="mb-5">
+            <div class="jumbotron">
+                <h1 class="display-4">Ready to Get Started?</h1>
+                <p class="lead">Experience the power of automated auditing and classification. Sign up now!</p>
+                <hr class="my-4">
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="{% url 'signup' %}" role="button">Sign Up</a>
+                </p>
+            </div>
+        </section>
+    </div>
+{% endblock %}

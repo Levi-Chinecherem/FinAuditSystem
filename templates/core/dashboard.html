@@ -1,0 +1,166 @@
+<!-- core/templates/core/dashboard.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+
+{% block content %}
+  <div class="container mt-4">
+    <h2 class="mb-4">Dashboard</h2>
+    <p>Welcome, {{ user.username }}! This is your personalized dashboard content.</p>
+
+    <div class="row">
+      <!-- Chart 1: Bar Chart -->
+      <div class="col-lg-6 mb-4">
+        <div class="card">
+          <div class="card-header">
+            Audit Log Chart
+          </div>
+          <div class="card-body">
+            <canvas id="auditLogChart" width="400" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 2: Doughnut Chart -->
+      <div class="col-lg-6 mb-4">
+        <div class="card">
+          <div class="card-header">
+            Internal Control Chart
+          </div>
+          <div class="card-body">
+            <canvas id="internalControlChart" width="400" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Chart 3: Line Chart -->
+      <div class="col-lg-12 mb-4">
+        <div class="card">
+          <div class="card-header">
+            Risk Assessment Chart
+          </div>
+          <div class="card-body">
+            <canvas id="riskAssessmentChart" width="400" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Chart 4: Scatter Plot -->
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            Impact vs. Likelihood Scatter Plot
+          </div>
+          <div class="card-body">
+            <canvas id="scatterPlotChart" width="400" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Chart 1: Bar Chart
+    var auditLogChartConfig = {
+      type: 'bar',
+      data: {
+        labels: {{ audit_actions|safe }},
+        datasets: [{
+          label: 'Number of Audit Logs',
+          data: {{ audit_counts|safe }},
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    };
+    var auditLogChart = new Chart(document.getElementById('auditLogChart').getContext('2d'), auditLogChartConfig);
+
+    // Chart 2: Doughnut Chart
+    var internalControlChartConfig = {
+      type: 'doughnut',
+      data: {
+        labels: ['Internal Controls', 'Remaining'],
+        datasets: [{
+          data: [{{ internal_controls }}, 100 - {{ internal_controls }}],
+          backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(255, 255, 255, 0.2)'],
+          borderColor: ['rgba(255, 99, 132, 1)', 'rgba(255, 255, 255, 1)'],
+          borderWidth: 1
+        }]
+      }
+    };
+    var internalControlChart = new Chart(document.getElementById('internalControlChart').getContext('2d'), internalControlChartConfig);
+
+    // Chart 3: Line Chart
+    var riskAssessmentChartConfig = {
+      type: 'line',
+      data: {
+        labels: {{ risk_dates|safe }},
+        datasets: [{
+          label: 'Number of Risk Assessments',
+          data: {{ risk_counts|safe }},
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    };
+    var riskAssessmentChart = new Chart(document.getElementById('riskAssessmentChart').getContext('2d'), riskAssessmentChartConfig);
+ 
+    
+    // Chart 4: Scatter Plot
+    var scatterPlotChartConfig = {
+      type: 'scatter',
+      data: {
+        datasets: [{
+          label: 'Impact vs. Likelihood',
+          data: {{ scatter_data|safe }},
+          backgroundColor: 'rgba(255, 99, 132, 0.7)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'linear',
+            position: 'bottom',
+            title: {
+              display: true,
+              text: 'Impact'
+            }
+          },
+          y: {
+            type: 'linear',
+            position: 'left',
+            title: {
+              display: true,
+              text: 'Likelihood'
+            }
+          }
+        }
+      }
+    };
+    var scatterPlotChart = new Chart(document.getElementById('scatterPlotChart').getContext('2d'), scatterPlotChartConfig);
+  </script>
+{% endblock %}

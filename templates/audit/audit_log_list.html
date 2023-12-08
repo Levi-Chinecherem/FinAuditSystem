@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Audit Log List{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2 class="mb-4">📜 Audit Log List</h2>
+
+    <ul class="list-group">
+      {% for log in audit_logs %}
+        <li class="list-group-item">
+          <a href="{% url 'audit:audit_log_detail' log.id %}">{{ log.get_action_display }} for {{ log.related_object }} at</a>
+          <small>{{ log.timestamp }}</small>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <a href="{% url 'audit:audit_log_create' %}" class="btn btn-primary mt-3">➕ Create Audit Log</a>
+  </div>
+{% endblock %}

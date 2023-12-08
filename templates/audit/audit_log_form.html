@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ action }} Audit Log{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2 class="mb-4">{{ action }} Audit Log</h2>
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <button type="submit" class="btn btn-primary">Save</button>
+      <a href="{% url 'audit:audit_log_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock %}

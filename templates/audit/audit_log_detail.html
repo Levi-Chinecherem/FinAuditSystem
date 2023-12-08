@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Audit Log Detail{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2 class="mb-4">Audit Log Detail</h2>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ audit_log.get_action_display }}</h5>
+        <p class="card-text">{{ audit_log.description }}</p>
+        <small>Source IP: {{ audit_log.source_ip }} | Related Object: {{ audit_log.related_object }}</small>
+        <p class="card-text"><small class="text-muted">Timestamp: {{ audit_log.timestamp }}</small></p>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <a href="{% url 'audit:audit_log_list' %}" class="btn btn-secondary">Back to Audit Log List</a>
+      <a href="{% url 'audit:audit_log_update' audit_log.id %}" class="btn btn-primary">Update</a>
+      <a href="{% url 'audit:audit_log_delete' audit_log.id %}" class="btn btn-danger">Delete</a>
+    </div>
+  </div>
+{% endblock %}

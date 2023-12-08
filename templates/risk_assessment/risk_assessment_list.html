@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Risk Assessments{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2 class="mb-4">Risk Assessments</h2>
+
+    <!-- Display a table of risk assessments -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Category</th>
+          <th scope="col">Description</th>
+          <th scope="col">Impact</th>
+          <th scope="col">Likelihood</th>
+          <th scope="col">Mitigation Plan</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for risk in risk_assessments %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ risk.get_category_display }}</td>
+            <td>{{ risk.description }}</td>
+            <td>{{ risk.impact }}</td>
+            <td>{{ risk.likelihood }}</td>
+            <td>{{ risk.mitigation_plan }}</td>
+            <td>
+              <!-- Add action buttons (e.g., update and delete) -->
+              <a href="{% url 'risk_assessment:risk_assessment_detail' risk.id %}" class="btn btn-primary">Detail</a>
+              <a href="{% url 'risk_assessment:risk_assessment_update' risk.id %}" class="btn btn-warning">Update</a>
+              <a href="{% url 'risk_assessment:risk_assessment_delete' risk.id %}" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Add a button to add a new risk assessment -->
+    <a href="{% url 'risk_assessment:risk_assessment_create' %}" class="btn btn-success">Add Risk Assessment</a>
+  </div>
+{% endblock %}

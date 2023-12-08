@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Internal Controls{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2 class="mb-4">Internal Controls</h2>
+
+    <!-- Display a table of internal controls -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for control in internal_controls %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ control.name }}</td>
+            <td>{{ control.description }}</td>
+            <td>
+              <!-- Add action buttons (e.g., detail, update, and delete) -->
+              <a href="{% url 'organizational_info:internal_control_detail' control.id %}" class="btn btn-primary">Detail</a>
+              <a href="{% url 'organizational_info:internal_control_edit' control.id %}" class="btn btn-warning">Update</a>
+              <a href="{% url 'organizational_info:internal_control_delete' control.id %}" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Add a button to add a new internal control -->
+    <a href="{% url 'organizational_info:internal_control_new' %}" class="btn btn-success">Add Internal Control</a>
+  </div>
+{% endblock %}

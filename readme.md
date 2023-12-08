@@ -1,7 +1,7 @@
 # FinAuditSystem
 
 FinAuditSystem is a web application designed to streamline auditing processes for financial institutions. It offers a personalized dashboard with various charts based on audit logs, internal controls, and risk assessments. This README provides instructions for installation, usage, system details, and expectations.
-![Sample](./images/risk_assessment_chart.png)
+![Sample](https://github.com/Levi-Chinecherem/FinAuditSystem/blob/main/sample%20outputs/p1.png)
 
 ## Table of Contents
 
@@ -192,14 +192,14 @@ Presents an impact vs. likelihood scatter plot with randomly generated data.
 
 ### Audit Log Chart and Internal Control Chart
 
-![Audit Log Chart](./images/audit_log_chart.png)
+![Audit Log Chart](https://github.com/Levi-Chinecherem/FinAuditSystem/blob/main/sample%20outputs/p2.png)
 
 ### Risk Assessment Chart
 
-![Risk Assessment Chart](./images/risk_assessment_chart.png)
+![Risk Assessment Chart](https://github.com/Levi-Chinecherem/FinAuditSystem/blob/main/sample%20outputs/p3.png)
 
 ### Scatter Plot
 
-![Scatter Plot](./images/scatter_plot.png)
+![Scatter Plot](https://github.com/Levi-Chinecherem/FinAuditSystem/blob/main/sample%20outputs/p4.png)
 
 
